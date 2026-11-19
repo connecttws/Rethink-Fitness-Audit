@@ -10,7 +10,6 @@ import {
   AUDIT_SECTIONS,
   calculateAudit,
   AuditRecord,
-  SAMPLE_AUDIT,
 } from "@/lib/audit-data";
 import { saveAudit, getAuditsList } from "@/lib/audit-storage";
 
@@ -68,11 +67,6 @@ export default function FieldAuditorPage() {
 
   const handleBusinessChange = (fields: Partial<ProspectDetails>) => {
     setBusiness((prev) => ({ ...prev, ...fields }));
-  };
-
-  const handleLoadSampleProfile = () => {
-    setBusiness(SAMPLE_AUDIT.business);
-    setAnswers(SAMPLE_AUDIT.answers);
   };
 
   const handleGenerateReport = async () => {
@@ -146,7 +140,6 @@ export default function FieldAuditorPage() {
             onAnswer={handleAnswer}
             onGenerateReport={handleGenerateReport}
             currentScore={liveScore}
-            onLoadSampleProfile={handleLoadSampleProfile}
           />
         ) : (
           <AuditCompleteStep

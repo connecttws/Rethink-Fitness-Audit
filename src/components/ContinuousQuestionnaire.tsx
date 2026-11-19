@@ -11,7 +11,6 @@ import {
   convertCmToFtIn,
   getScoreBand,
   getImprovementVectors,
-  SAMPLE_AUDIT,
 } from "@/lib/audit-data";
 import {
   Check,
@@ -39,7 +38,6 @@ interface ContinuousQuestionnaireProps {
   onAnswer: (questionId: string, optionIndex: number) => void;
   onGenerateReport: () => void;
   currentScore: number;
-  onLoadSampleProfile?: () => void;
 }
 
 const PILLAR_META: Record<
@@ -103,7 +101,6 @@ export function ContinuousQuestionnaire({
   onAnswer,
   onGenerateReport,
   currentScore,
-  onLoadSampleProfile,
 }: ContinuousQuestionnaireProps) {
   const [showPhoneModal, setShowPhoneModal] = useState(false);
   const [modalPhone, setModalPhone] = useState(
@@ -235,29 +232,14 @@ export function ContinuousQuestionnaire({
     <div className="space-y-6 sm:space-y-8 animate-fadeIn pb-32">
       {/* Top Application Header */}
       <div className="pt-2 pb-1 space-y-2">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 text-white font-black text-xs tracking-wider shadow-sm flex items-center justify-center font-mono shrink-0">
-              RF
-            </div>
-            <span className="text-[11px] font-mono font-black uppercase tracking-wider text-emerald-800 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/25 inline-flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Rethink Fitness
-            </span>
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 text-white font-black text-xs tracking-wider shadow-sm flex items-center justify-center font-mono shrink-0">
+            RF
           </div>
-
-          {/* Quick Load Sample Profile Button */}
-          {onLoadSampleProfile && (
-            <button
-              type="button"
-              onClick={onLoadSampleProfile}
-              className="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 font-bold text-xs flex items-center gap-1.5 border border-slate-700 shadow-sm transition-all cursor-pointer"
-              title="Load Aakash Verma (Sample Diagnostic Profile)"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Load Sample Profile (Aakash Verma)</span>
-            </button>
-          )}
+          <span className="text-[11px] font-mono font-black uppercase tracking-wider text-emerald-800 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/25 inline-flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            Rethink Fitness
+          </span>
         </div>
 
         <div>
